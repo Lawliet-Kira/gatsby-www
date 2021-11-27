@@ -40,15 +40,18 @@ const Login = () => {
                 onSubmit={handleSubmit}
             >  
             <div className="loginbox">
-                <label>
+                
+                <label for="username">
                     Username
                 </label>
-                <input type="text" name="username" onChange={handleUpdate} />
+
+                <input id="username" type="text" name="username" onChange={handleUpdate} />
                 
-                <label>
+                <label for="password">
                     Password
                 </label>
                 <input
+                    id="password"
                     type="password" 
                     name="password" 
                     onChange={handleUpdate} 
