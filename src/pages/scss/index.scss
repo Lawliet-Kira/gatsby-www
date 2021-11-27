@@ -1,8 +1,18 @@
 html {
-    background-color:white;
-
+    
+    background-color: white;
+  
     p {
-        color: white;
+
+      color: black;
+      font-family: "Tahoma";
+  
+      div {
+        border-width: 1px;
+        border-color: black;
+      }
+
     }
 
 }
+  

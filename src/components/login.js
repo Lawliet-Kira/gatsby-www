@@ -1,6 +1,9 @@
 import React, { useState }from 'react'
 import { navigate } from 'gatsby'
 import { handleLogin, isLoggedIn } from '../services/auth'
+import { Button } from 'react-bootstrap'
+import "./scss/login.scss"
+
 
 const defaultValues = {
     username: '',
@@ -24,7 +27,6 @@ const Login = () => {
         navigate(`/app/profile`)
     }
 
-    
     if( isLoggedIn() ){
         navigate(`/app/profile`)
     }
@@ -32,24 +34,29 @@ const Login = () => {
     return ( 
         <>
             <h1> Log in </h1>
+    
             <form
                 method="post"
                 onSubmit={handleSubmit}
-            >
+            >  
+            <div className="loginbox">
                 <label>
                     Username
-                    <input type="text" name="username" onChange={handleUpdate} />
                 </label>
+                <input type="text" name="username" onChange={handleUpdate} />
+                
                 <label>
                     Password
-                    <input
-                        type="password" 
-                        name="password" 
-                        onChange={handleUpdate} 
-                    />
                 </label>
-
-                <input type="submit" value="Log In" />
+                <input
+                    type="password" 
+                    name="password" 
+                    onChange={handleUpdate} 
+                />
+ 
+                <br />
+                <Button primary className="logbutton" type="submit"> Log In </Button>
+            </div>
                 
             </form>
         </>

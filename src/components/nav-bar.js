@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link, navigate } from 'gatsby'
 import { getUser, isLoggedIn, logout } from '../services/auth'
+import "./scss/nav-bar.scss"
+import { Navbar, Nav, Container } from 'react-bootstrap'
 
 export default function NavBar() {
 
@@ -8,7 +10,7 @@ export default function NavBar() {
 
     if (isLoggedIn()) {
         greetingMessage = `Hello ${getUser().name}`
-    }else {
+    } else {
         greetingMessage = "You are not logged in"
     }
 
@@ -19,30 +21,27 @@ export default function NavBar() {
 
     return (
         <div
-            style={{
-                display: "flex",
-                flex: "1",
-                justifyContent: "space-between",
-                borderBottom: "1px solid #d1c1e0",
-            }}      
+            className="navbar" 
         >
-            <span> {greetingMessage} </span>
+            <span > {greetingMessage} </span>
 
-            <nav>
-                <Link to="/"> Home </Link>
-                {` `}
-                <Link to="/"> Profile </Link>
-                {` `}
-                { isLoggedIn() ? (
-                    <a
-                        href="/"
-                        onClick={navLogOut}
-                    >
-                    Logout
-                    </a>
-                ) : null }
-
-            </nav>
+            <Navbar bg="dark" variant="dark">
+                <Container>
+                    <Navbar.Brand href="/">Gatsby</Navbar.Brand>
+                    <Nav className="me-auto">
+                        <Nav.Link href="/">Home</Nav.Link>
+                        <Nav.Link href="/app/profile">Profile</Nav.Link>
+                        { isLoggedIn() ? (
+                            <Nav.Link
+                                href="/"
+                                onClick={navLogOut}
+                            >
+                                Logout
+                            </Nav.Link>
+                        ) : null }
+                    </Nav>
+                </Container>
+            </Navbar>
             
         </div>
     )
